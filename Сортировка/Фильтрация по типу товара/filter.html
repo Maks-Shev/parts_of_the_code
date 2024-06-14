@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Product</title>
+    </head>
+    <body>
+        <h1>Выберите категорию товаров</h1>
+        <select id="category-select">
+            <option value="">Все категориии</option>
+            <option value="Электроника">Электроника</option>
+            <option value="Бытовая техника">Бытовая техника</option>
+            <option value="Книги">Книги</option>
+            <option value="Одежда">Одежда</option>
+            <option value="Мебель">Мебель</option>
+        </select>
+
+        <h2>Товары:</h2>
+        <ul id="product-list"></ul>
+
+        <script>
+            const productsData = [
+                {
+                    id: 1,
+                    name: "Ноутбук",
+                    category: "Электроника",
+                },
+                {
+                    id: 2,
+                    name: "Смартфон",
+                    category: "Электроника",
+                },
+                {
+                    id: 3,
+                    name: "Кофемашина",
+                    category: "Бытовая техника",
+                },
+                {
+                    id: 4,
+                    name: "Фотокамера",
+                    category: "Электроника",
+                },
+                {
+                    id: 5,
+                    name: "Микроваолновая печь",
+                    category: "Бытовая техника",
+                },
+                {
+                    id: 6,
+                    name: "Книга",
+                    category: "Книги",
+                },
+                {
+                    id: 7,
+                    name: "Футболка",
+                    category: "Одежда",
+                },
+                {
+                    id: 8,
+                    name: "Шапка",
+                    category: "Одежда",
+                },
+                {
+                    id: 9,
+                    name: "Стол",
+                    category: "Мебель",
+                },
+                {
+                    id: 10,
+                    name: "Стул",
+                    category: "Мебель",
+                },
+            ];
+
+
+         function displayProducts (category) {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+
+            productsData.forEach(product => {
+                if (category === '' || product.category === category) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = product.name;
+                    productList.append(listItem);
+                }
+            });
+         }
+
+         const categorySelect =document.getElementById('category-select');
+         categorySelect.addEventListener('change', function () {
+            const selectedCategory = categorySelect.value;
+            displayProducts(selectedCategory);
+         });
+
+            displayProducts('');
+
+
+            
+        </script>
+    </body>
+</html>
